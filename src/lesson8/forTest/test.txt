@@ -1,0 +1,167 @@
+1. Что будет выведено
+    Будет ошибка компиляции
+    String 1
+    String String
+    String null
+
+class Box<T> {
+	private T value;
+
+	public T getValue() {
+		return value;
+	}
+
+	public void setValue(T value) {
+		this.value = value;
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		Box<String> box = new Box<>();
+		box.setValue("String");
+		System.out.println(box.getValue());
+		box.setValue(new Integer(1));
+		System.out.println(box.getValue());
+	}
+}
+
+2. Что будет выведено
+    Будет ошибка компиляции
+    String 1
+    String String
+    String null
+
+
+class Box<T> {
+
+	private T value;
+
+	public T getValue() {
+		return value;
+	}
+
+	public void setValue(T value) {
+		this.value = value;
+	}
+}
+
+public class BoxMain extends Box<T> {
+
+	public static void main(String[] args) {
+		Box<String> box = new BoxMain<>();
+        box.setValue("String");
+        System.out.println(box.getValue());
+        box.setValue(new Integer(1));
+        System.out.println(box.getValue());
+	}
+}
+
+3. Что будет
+    1
+    Ошибка компиляции
+    null
+    Box = 1
+
+
+class Box<T> {
+
+	private final T value;
+
+	public Box(T value) {
+		this.value = value;
+	}
+
+	public T getValue() {
+		return value;
+	}
+
+	@Override
+    	public String toString() {
+    		return "Box = " + value;
+    	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		print(new Box<Integer>(1));
+	}
+
+	public static <T extends Integer> void print(Box<T> box) {
+		System.out.println(box.getValue());
+	}
+}
+
+4. Что будет
+    1
+    Ошибка компиляции
+    null
+    Box = 1
+
+class Box<T> {
+
+	private final T value;
+
+	public Box(T value) {
+		this.value = value;
+	}
+
+	public T getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return "Box = " + value;
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		print(new Box<Integer>(1));
+	}
+
+	public static void print(Box<? extends Number> box) {
+		System.out.println(box.getValue());
+	}
+}
+
+
+
+5. Что будет
+   Ошибка компиляции
+   1
+   null
+   Box = 1
+
+class Box<T> {
+
+	private final T value;
+
+	public Box(T value) {
+		this.value = value;
+	}
+
+	public T getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return "Box = " + value;
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		print(new Box<Integer>(1));
+	}
+
+	public static void print(Box<? super Number> box) {
+		System.out.println(box.getValue());
+	}
+}

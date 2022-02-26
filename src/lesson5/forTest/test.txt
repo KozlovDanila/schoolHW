@@ -1,0 +1,131 @@
+1. Что будет выведено в консоль?
+    а) Будет ошибка компиляции, тк класс SomeInterfaceImpl не реализует метод run
+    б) Будет ошибка компиляции, тк класс метод go не имеет аннотации @Override
+    в) null
+    г) пустая строка
+
+public interface ISomeInterface {
+	String go();
+	String run();
+}
+
+public class SomeInterfaceImpl implements ISomeInterface {
+
+	public static void main(String[] args) {
+		ISomeInterface impl = new SomeInterfaceImpl();
+		System.out.println(impl.run());
+	}
+
+	public String go() {
+		return "go";
+	}
+}
+
+2. Что будет выведено в консоль?
+    а) Будет ошибка компиляции, тк класс SomeInterfaceImpl реализует метод run неправильно
+    б) Будет ошибка компиляции, тк класс методы go и run не имеют аннотации @Override
+    в) null
+    г) run
+
+public interface ISomeInterface {
+	String go();
+	String run();
+}
+
+public class SomeInterfaceImpl implements ISomeInterface {
+
+	public static void main(String[] args) {
+		ISomeInterface impl = new SomeInterfaceImpl();
+		System.out.println(impl.run());
+	}
+
+	public String go() {
+		return "go";
+	}
+
+	public void run() {
+		return "run";
+	}
+}
+
+3. Что будет выведено?
+    а) Будет ошибка компиляции, два метода имеют одинаковую сигнатуру
+    б) Программа запустится, но будет ошибка времени исполнения
+    в) Строка!
+    г) Строка!?
+
+public abstract class SomeClass {
+
+	public void print(Object value) {
+		print((String)value + "?");
+	}
+
+	abstract void print(String value);
+}
+
+public class SomeInterfaceImpl extends SomeClass {
+
+	public static void main(String[] args) {
+		SomeClass someClass = new SomeInterfaceImpl();
+		Object str = new String("Строка!");
+		someClass.print(str);
+	}
+
+	@Override
+	void print(String value) {
+		System.out.println(value);
+	}
+}
+
+4. Что будет выведено
+    а) Строка!
+    б) Будет ошибка компиляции, тк класс не может реализовывать интерфейс и абстрактный класс с одинаковыми методами
+    в) Программа запустится, но будет ошибка времени исполнения
+    г) Будет ошибка компиляции, тк в абстрактном классе нет неабстрактного метода
+
+public interface ISomeInterface {
+	void print(String value);
+}
+
+public abstract class SomeClass {
+	public abstract void print(String value);
+}
+
+public class SomeInterfaceImpl extends SomeClass implements ISomeInterface {
+
+	public static void main(String[] args) {
+		SomeClass someClass = new SomeInterfaceImpl();
+		someClass.print("Строка!");
+	}
+
+	@Override
+	public void print(String value) {
+		System.out.println(value);
+	}
+}
+
+5. Что будет выведено
+       а) Строка!
+       б) Будет ошибка компиляции, тк класс SomeClass не реализует метод интерфейса print
+       в) Программа запустится, но будет ошибка времени исполнения
+       г) Будет ошибка компиляции, тк создается объект абстрактного класса
+
+public interface ISomeInterface {
+	void print(String value);
+}
+
+public abstract class SomeClass implements ISomeInterface {
+}
+
+public class SomeInterfaceImpl extends SomeClass {
+
+	public static void main(String[] args) {
+		SomeClass someClass = new SomeClass();
+		someClass.print("Строка!");
+	}
+
+	@Override
+	public void print(String value) {
+		System.out.println(value);
+	}
+}

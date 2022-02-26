@@ -1,0 +1,70 @@
+1. Что будет выведено
+    Сообщение
+    Ошибка компиляции
+    Ошибка времени исполнения
+    Сообщение !!!!
+
+public class Outer {
+	class Inner {
+		public void show(String message) {
+			System.out.println(message);
+		}
+	}
+
+	public void show(String message) {
+		System.out.println(message + " !!!!");
+	}
+
+	public static void main(String[] args) {
+		Outer.Inner inner = new Outer().new Inner();
+		inner.show("Сообщение");
+	}
+}
+
+2. Что будет выведено
+    ПРИВЕТ!
+    ПРИВЕТ! !!!!
+    Привет!
+    Ошибка компиляции
+
+public abstract class Outer {
+	class Inner {
+		public void show(String message) {
+			System.out.println(message);
+		}
+	}
+
+	public void show(String message) {
+		System.out.println(message + "!!!!");
+	}
+
+	public static void main(String[] args) {
+		new Outer() {
+			@Override
+			public void show(String message) {
+				System.out.println(message.toUpperCase());
+			}
+		}.show("Привет!");
+	}
+}
+
+3. Что будет выведено
+    Ошибка компиляции
+    ПРИВЕТ!
+    ПРИВЕТ! !!!!
+    Привет!
+
+public abstract class Outer implements Comparable {
+	public void show(String message) {
+		System.out.println(message + "!!!!");
+	}
+
+	public static void main(String[] args) {
+		new Outer() implements Comparable {
+			@Override
+			public void show(String message) {
+				System.out.println(message.toUpperCase());
+			}
+		}.show("Привет!");
+	}
+}

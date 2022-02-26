@@ -1,0 +1,3 @@
+level=ERROR
+writer=lesson7.hw.logging.writers.ConsoleWriter
+file=./src/lesson8/hw/javaBean/test/log.txt

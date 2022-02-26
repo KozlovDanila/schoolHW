@@ -1,0 +1,123 @@
+1. Что будет выведено в консоль?
+    Exception in thread "main" java.lang.RuntimeException: Страшная ошибка !
+    Страшная ошибка
+    Ничего
+    Программа не скомпилируется
+
+  public class Main {
+
+  	public static void main(String[] args) {
+  		try {
+  			foo();
+  		} catch (NullPointerException e) {
+  			System.out.println(e.getMessage());
+  		}
+  	}
+
+  	public static void foo() {
+  		throw new RuntimeException("Страшная ошибка");
+  	}
+  }
+
+2. Что будет выведено в консоль?
+    Exception in thread "main" java.io.FileNotFoundException: Страшная ошибка
+    Страшная ошибка
+    Ничего
+    Программа не скомпилируется !
+
+public class Main {
+
+	public static void main(String[] args) {
+		try {
+			foo();
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static void foo() throws IOException {
+		throw new FileNotFoundException("Страшная ошибка");
+	}
+}
+
+3. Что будет выведено?
+    Exception in thread "main" java.io.IOException: Страшная ошибка
+    Страшная ошибка
+    Ничего
+    Программа не скомпилируется !
+
+public class Main {
+
+	public static void main(String[] args) {
+		try {
+			foo();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static void foo() throws IOException {
+		throw new FileNotFoundException("Страшная ошибка");
+	}
+}
+
+4. Что будет выведено?
+    Exception in thread "main" java.io.IOException: Страшная ошибка
+    Страшная ошибка !
+    Ничего
+    Программа не скомпилируется
+
+    public class Main {
+
+    	public static void main(String[] args) {
+    		try {
+    			foo();
+    		} catch (IOException e) {
+    			System.out.println(e.getMessage());
+    		}
+    	}
+
+    	public static void foo() throws IOException {
+    		throw new FileNotFoundException("Страшная ошибка");
+    	}
+    }
+
+5. Что будет выведено, если в файле a.txt находятся строка "Это файл"
+    Exception in thread "main" java.io.FileNotFoundException:
+    Это строка
+    Ничего
+    Программа не скомпилируется !
+
+    public static void main(String[] args) {
+        try (BufferedReader in =
+                     new BufferedReader(
+                            new InputStreamReader(
+                                    new FileInputStream("a.txt"))))
+        {
+            String value = in.write();
+            System.out.println(value);
+        } catch (IOException e) {
+        }
+    }
+
+6. Что будет записано в файл a.txt
+    Exception in thread "main" java.io.FileNotFoundException:
+    Это строка !
+    Ничего
+    Программа не скомпилируется
+
+
+    public static void main(String[] args) {
+		try (BufferedWriter out =
+					 new BufferedWriter(
+					 		new OutputStreamWriter(
+					 				new FileOutputStream("a.txt"))))
+		{
+			out.write("Это строка");
+		} catch (IOException e) {
+		}
+	}

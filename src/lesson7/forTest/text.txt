@@ -1,0 +1,126 @@
+1. Что будет выведено
+    Name
+    NameStatic
+    ничего
+    Произойдёт ошибка компиляции !
+
+public class Animal {
+	public void getName() {
+		System.out.print("Name");
+	}
+
+	private static void getName() {
+		System.out.print("NameStatic");
+	}
+
+	public static void main(String[] tracks) {
+		new Animal().getName();
+	}
+}
+
+2. Что будет выведено
+    4
+    5
+    ничего
+    Будет ошибка компиляции !
+
+class Ship {
+	private int height = 5;
+	public int getHeight() { return height; }
+}
+public class Rocket extends Ship {
+	public int height = 4;
+	public void printDetails() {
+		System.out.print(super.height);
+	}
+	public static final void main(String[] fuel) {
+		new Rocket().printDetails();
+	}
+}
+
+3. Что будет выведено
+    Mars
+    Class B
+    ничего
+    Будет ошибка компиляции !
+
+abstract class A {
+	abstract String getName();
+}
+
+class B {
+	String getName() {
+		return "Class B";
+	}
+}
+
+public class C extends A implements B {
+	public C() {
+		super();
+	}
+
+	public String getName() {
+		return "Mars";
+	}
+
+	public static void main(final String[] probe) {
+		System.out.print(((B) new C()).getName());
+	}
+}
+
+4. Что будет выведено
+       Mars
+       Class B !
+       ничего
+       Будет ошибка компиляции
+
+interface A {
+	String getName();
+}
+
+class B implements A {
+	public String getName() {
+		return "Class B";
+	}
+}
+
+public class C extends B {
+	@Override
+	public String getName() {
+		return super.getName();
+	}
+
+	public static void main(final String[] probe) {
+		System.out.print(new C().getName());
+	}
+}
+
+5. Что будет выведено
+          LionTiger
+          TigerLion
+          Будет ошибка компиляции
+          Tiger Lion
+
+abstract class Animal {
+	abstract String getName();
+}
+
+class Tiger extends Animal {
+	public String getName() {
+		return "Tiger";
+	}
+}
+
+public class Lion extends Animal {
+	@Override
+	public String getName() {
+		return "Lion";
+	}
+
+	public static void main(final String[] probe) {
+		Animal[] animals = {new Tiger(), new Lion()};
+		for (Animal animal : animals) {
+			System.out.print(animal.getName());
+		}
+	}
+}
