@@ -1,4 +1,4 @@
-package lesson3.hw.life;
+package lesson7.hw.life;
 
 /**
  * Создает поле для игры

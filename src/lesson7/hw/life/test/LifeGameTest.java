@@ -1,8 +1,7 @@
-package lesson3.hw.life.test;
+package lesson7.hw.life.test;
 
-import lesson3.hw.life.GameHelper;
-import lesson3.hw.life.LifeGame;
-import lesson3.hw.life.LifeYearExecutor;
+import lesson7.hw.life.LifeGame;
+import lesson7.hw.life.LifeYearExecutor;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +16,7 @@ public class LifeGameTest {
 				{0, 0, 0, 0},
 				{0, 1, 1, 1}
 		};
-		LifeGame lifeGame = new LifeGame(field, new GameHelper(false), new LifeYearExecutor());
+		LifeGame lifeGame = new LifeGame(field, new IOForTest(), new LifeYearExecutor());
 		int yearOfLife = lifeGame.play();
 		assertEquals(6, yearOfLife);
 	}

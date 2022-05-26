@@ -1,4 +1,6 @@
-package lesson3.hw.life;
+package lesson7.hw.life;
+
+import java.util.Arrays;
 
 /**
  * Игра в жизнь
@@ -9,13 +11,13 @@ package lesson3.hw.life;
  */
 public class LifeGame {
 
-	int[][] field;
-	GameHelper helper;
-	LifeYearExecutor lifeYearExecutor;
+	private final int[][] field;
+	private final InputOutput io;
+	private final LifeYearExecutor lifeYearExecutor;
 
-	public LifeGame(int[][] field, GameHelper helper, LifeYearExecutor lifeYearExecutor) {
+	public LifeGame(int[][] field, InputOutput io, LifeYearExecutor lifeYearExecutor) {
 		this.field = ArrayUtil.copy(field);
-		this.helper = helper;
+		this.io = io;
 		this.lifeYearExecutor = lifeYearExecutor;
 	}
 
@@ -35,12 +37,7 @@ public class LifeGame {
 		return yearOfLife;
 	}
 
-	/**
-	 * Все ли ячейки умерли
-	 *
-	 * @return true, если нет ни одной ячейки = 1
-	 */
-	boolean allDead() {
+	private boolean allDead() {
 		for (int[] row : field) {
 			for (int cell : row) {
 				if (cell == 1) {
@@ -51,17 +48,15 @@ public class LifeGame {
 		return true;
 	}
 
-	/**
-	 * Вывод поля
-	 */
-	void print() {
-		helper.print(field);
+	private void print() {
+		StringBuilder builder = new StringBuilder();
+		for (int[] row : field) {
+			builder.append(Arrays.toString(row));
+		}
+		io.out(builder.toString());
 	}
 
-	/**
-	 * Нажатие для следующего хода
-	 */
-	void pressNext() {
-		helper.pressNext();
+	private void pressNext() {
+		io.in();
 	}
 }

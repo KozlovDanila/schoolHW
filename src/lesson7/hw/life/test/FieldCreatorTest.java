@@ -1,6 +1,6 @@
-package lesson3.hw.life.test;
+package lesson7.hw.life.test;
 
-import lesson3.hw.life.FieldCreator;
+import lesson7.hw.life.FieldCreator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

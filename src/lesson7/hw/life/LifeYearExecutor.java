@@ -1,4 +1,4 @@
-package lesson3.hw.life;
+package lesson7.hw.life;
 
 /**
  * Класс, который имитирует год жизни
@@ -13,7 +13,7 @@ public class LifeYearExecutor {
 	 *
 	 * @param field Поле для игры
 	 */
-	void lifeYear(int[][] field) {
+	public void lifeYear(int[][] field) {
 		int[][] tempField = ArrayUtil.copy(field);
 		for (int i = 0; i < field.length; i++) {
 			for (int j = 0; j < field.length; j++) {
@@ -39,7 +39,7 @@ public class LifeYearExecutor {
 	 * @param j     координата ячейки по j
 	 * @return кол-во соседей, равных 1
 	 */
-	int getNeighborsCount(int[][] field, int i, int j) {
+	private int getNeighborsCount(int[][] field, int i, int j) {
 		int size = field.length;
 		int result = 0;
 

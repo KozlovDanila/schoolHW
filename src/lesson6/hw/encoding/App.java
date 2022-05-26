@@ -4,6 +4,8 @@ import lesson6.hw.countSymbolsIntLine.LineToLineFileOvertaker;
 import lesson6.hw.countSymbolsIntLine.ReaderFromFile;
 import lesson6.hw.countSymbolsIntLine.WriterToFile;
 
+import java.nio.charset.Charset;
+
 public class App {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package lesson3.hw.life;
+package lesson7.hw.life;
 
 /**
  * Утилитарный класс для работы с масивами
@@ -11,7 +11,7 @@ public class ArrayUtil {
 	 * @param array настоящий массив
 	 * @return скопированный массив
 	 */
-	static int[][] copy(int[][] array) {
+	public static int[][] copy(int[][] array) {
 		int length = array.length;
 		int[][] result = new int[length][length];
 		for (int i = 0; i < length; i++) {

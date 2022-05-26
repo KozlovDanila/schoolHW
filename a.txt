@@ -1,1 +1,2 @@
-private
+level=trace1
+writer=console
